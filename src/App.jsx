@@ -4,8 +4,8 @@ import {
 } from "react-router-dom";
 
 // Routes
-// import Dashboard, { dashboardLoader } from "./pages/Dashboard";
-// import Error from "./pages/Error";
+import Dashboard, { dashboardLoader } from "./pages/Dashboard";
+import Error from "./pages/Error";
 
 const router = createBrowserRouter([
   {
@@ -17,9 +17,11 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <div className="App">
-    <RouterProvider router={router} />
-  </div>;
+  return (
+    <div className="App">
+      <RouterProvider router={router} />
+    </div>
+  );
 }
 
 export default App;
