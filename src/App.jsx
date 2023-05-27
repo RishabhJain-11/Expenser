@@ -29,6 +29,11 @@ const router = createBrowserRouter([
         errorElement: <Error />
       },
       {
+        path: "expenses",
+        element: <ExpensesPage />,
+        loader: expensesLoader
+      },
+      {
         path: "logout",
         action: logoutAction
       }
