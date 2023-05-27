@@ -12,6 +12,7 @@ import { logoutAction } from "./actions/logout";
 // Library
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ExpensesPage, { expensesAction, expensesLoader } from "./pages/ExpensesPage";
 
 
 const router = createBrowserRouter([
@@ -31,7 +32,8 @@ const router = createBrowserRouter([
       {
         path: "expenses",
         element: <ExpensesPage />,
-        loader: expensesLoader
+        loader: expensesLoader,
+        action: expensesAction,
       },
       {
         path: "logout",
@@ -46,8 +48,25 @@ function App() {
     <div className="App">
       <RouterProvider router={router} />
       <ToastContainer />
-    </div>
+    </div> 
   );
 }
 
 export default App;
+
+/**
+ * Pakistan 
+ * Pop = 24 cr
+ * GDP = 376 billion $
+ * GDP per capita	= $1,658 
+ * HDI = 0.544
+ * Expenses = 75 $ billion
+ * Revenue = 45 billion $
+ * 
+ * Rajasthan
+ * Pop = 8 cr
+ * GDP = 191 billion $ = $2,100
+ * HDI = 0.628
+ * Expenses = 34 billion $
+ * Revenue = 27 billion $
+ */

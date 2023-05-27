@@ -3,12 +3,10 @@ import { toast } from "react-toastify";
 import Intro from "../components/Intro";
 import AddBudgetForm from "../components/AddBudgetForm";
 import AddExpenseForm from "../components/AddExpenseForm";
-import { createBudget, fetchData, waait, createExpense } from "../helpers"
+import { createBudget, fetchData, waait, createExpense, deleteItem } from "../helpers"
 import BudgetItem from "../components/BudgetItem";
 import Table from '../components/Table'
 import { Link } from "react-router-dom";
-import ExpenseItem from "../components/ExpenseItem";
-
 
 export function dashboardLoader() {
     const userName = fetchData("userName");
@@ -21,6 +19,7 @@ export async function dashboardAction({ request }) {
 
     const data = await request.formData();
     const { _action, ...values } = Object.fromEntries(data)
+
     if (_action === "newUser") {
         try {
             localStorage.setItem("userName", JSON.stringify(values.userName))
@@ -52,6 +51,18 @@ export async function dashboardAction({ request }) {
             return toast.success(`Expense ${values.newExpense} created !!!`)
         } catch (e) {
             throw new Error("There was a problem creating your expenses.")
+        }
+    }
+
+    if (_action === "deleteExpense") {
+        try {
+            deleteItem({
+                key: "expenses",
+                id: values.expenseId,
+            });
+            return toast.success("Expense deleted!");
+        } catch (e) {
+            throw new Error("There was a problem deleting your expense.");
         }
     }
 }
