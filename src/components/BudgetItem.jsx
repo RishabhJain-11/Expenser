@@ -59,3 +59,4 @@ const BudgetItem = ({ budget, showDelete = false }) => {
 };
 
 export default BudgetItem
+
